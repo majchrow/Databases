@@ -1,3 +1,5 @@
 ## Repository containing different databases assignments.
 
-#### Assignments1 = Oracle PL/SQL 
+#### Assignment1 = Oracle PL/SQL 
+
+#### Assignment2 = .Net, Entity Framework
