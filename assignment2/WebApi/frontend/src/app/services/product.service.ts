@@ -37,8 +37,8 @@ export class ProductService {
     public postProduct(data: Product, categoryID: number): Observable<Product> {
         let obj = {
             Name: data.name,
-            UnitsInStock: data.unitsInStock,
-            Unitprice: data.unitprice,
+            UnitsInStock: parseInt(data.unitsInStock.toString()), // Somehow it was converted to String ...
+            Unitprice: parseInt(data.unitprice.toString()),
             CategoryID: categoryID
         }
         return this.http.post<Product>(this.rootURL, obj);
@@ -48,8 +48,8 @@ export class ProductService {
         let obj = {
             ProductID: data.productID,
             Name: data.name,
-            UnitsInStock: data.unitsInStock,
-            Unitprice: data.unitprice,
+            UnitsInStock: parseInt(data.unitsInStock.toString()),
+            Unitprice: parseInt(data.unitprice.toString()),
             CategoryID: categoryID
         }
         return this.http.put<any>(`${this.rootURL}/${data.productID}`, obj);
