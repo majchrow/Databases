@@ -7,6 +7,55 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   flex: 1 1 auto;
 }
 
-.icon {
+.icon, .icon1{
   padding: 0 14px;
 }
+
+.icon1:hover {
+  cursor: pointer;
+}
+
+
+form {
+  padding-left: 20px;
+}
+
+.form-group > input {
+  font-weight: bolder;
+}
+
+.form-group > label {
+  font-weight: lighter;
+  display: block;
+  text-align: center;
+}
+
+button[type="submit"] {
+  background-color: #67dfd4;
+  color: #fff;
+}
+
+.jumbotron {
+  background-color: #fff;
+  padding-top: 32px;
+}
+
+table tr:hover {
+  cursor: pointer;
+}
+
+table td {
+  width: 50%;
+}
+
+input.ng-touched.ng-invalid {
+  border-color: #dc3545;
+}
+
+div.validation-error {
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
+

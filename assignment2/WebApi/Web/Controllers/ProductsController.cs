@@ -20,11 +20,22 @@ namespace Web.Controllers
             _context = context;
         }
 
+
+
         // GET: api/Products
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
             return await _context.Products.ToListAsync();
+        }
+
+        // GET: api/Products/byCategory1
+        [HttpGet("byCategory{id}")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductsByCategory(int id)
+        {
+            return await _context.Products.Where(x => x.CategoryID == id).ToListAsync();
+            
+;
         }
 
         // GET: api/Products/5

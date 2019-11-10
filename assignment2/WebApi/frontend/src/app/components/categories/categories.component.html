@@ -1,1 +1,15 @@
-<p>categories works!</p>
+<div>
+  <app-header [title]="title" (homeClick)="onHomeClick($event)"></app-header>
+  <div class="jumbtron">
+    <div class="row">
+      <div class="col-md-5">
+          <app-category-form *ngIf ="!categoryID"></app-category-form>
+          <app-product-form [categoryID]="categoryID" *ngIf ="categoryID"></app-product-form>
+      </div>
+      <div class="col-md-7">
+        <app-categories-list *ngIf="!categoryID" (categoryEmitter)="assignID($event)"></app-categories-list>
+        <app-products-list [categoryID]="categoryID" *ngIf="categoryID"></app-products-list>
+      </div>
+    </div>
+  </div>
+</div>
