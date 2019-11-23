@@ -9,7 +9,8 @@ public class Main {
         Product product1 = new Product("Prod1", 10);
         Product product2 = new Product("Prod2", 0);
         Product product3 = new Product("Prod3", 5);
-        Supplier supplier = new Supplier("AGH2", "Czarnowiejska2", "Krakow2 ");
+        Supplier supplier = new Supplier("AGH2",
+                new Adress("Czarnowiejska2", "Krakow2 "));
         Category category1 = new Category("Cat1");
         Category category2 = new Category("Cat2");
         Invoice invoice1 = new Invoice(1);
@@ -52,6 +53,7 @@ public class Main {
         for (Invoice invoice: invByProd.getResultList()){
             System.out.println(invoice.getInvoiceNumber());
         }
+
 
 //        TypedQuery<Product> prodByCat = session.createQuery("from Product as product" + " where lower(product.category.name)=:categoryName", Product.class);
 //        prodByCat.setParameter("categoryName", "cat1");

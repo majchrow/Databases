@@ -9,8 +9,9 @@ public class Supplier {
     private int SupplierID;
 
     private String companyName;
-    private String street;
-    private String city;
+
+    @Embedded
+    private Adress adress;
 
     @OneToMany(mappedBy = "supplier")
     private Set<Product> products = new HashSet<>();
@@ -18,10 +19,9 @@ public class Supplier {
     public Supplier() {
     }
 
-    public Supplier(String companyName, String street, String city) {
+    public Supplier(String companyName, Adress adress) {
         this.companyName = companyName;
-        this.street = street;
-        this.city = city;
+        this.adress = adress;
     }
 
     public int getSupplierID() {
@@ -32,13 +32,6 @@ public class Supplier {
         return companyName;
     }
 
-    public String getStreet() {
-        return street;
-    }
-
-    public String getCity() {
-        return city;
-    }
 
     public Set<Product> getProducts() {
         return products;
@@ -50,14 +43,6 @@ public class Supplier {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
     }
 
     public void setProducts(Set<Product> products) {
