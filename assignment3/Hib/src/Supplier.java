@@ -3,50 +3,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Supplier {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int SupplierID;
-
-    private String companyName;
-
-    @Embedded
-    private Adress adress;
+public class Supplier extends Company {
+    private String bankAccountNumber;
 
     @OneToMany(mappedBy = "supplier")
     private Set<Product> products = new HashSet<>();
 
     public Supplier() {
+        super();
     }
-
-    public Supplier(String companyName, Adress adress) {
-        this.companyName = companyName;
-        this.adress = adress;
-    }
-
-    public int getSupplierID() {
-        return SupplierID;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-
-    public Set<Product> getProducts() {
-        return products;
-    }
-
-    public void setSupplierID(int supplierID) {
-        SupplierID = supplierID;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public void setProducts(Set<Product> products) {
-        this.products = products;
+    public Supplier(String bankAccountNumber, String companyName, String street, String city, String zipCode) {
+        super(companyName, street, city, zipCode);
+        this.bankAccountNumber = bankAccountNumber;
     }
 
     public void addProduct(Product product){
@@ -54,4 +22,7 @@ public class Supplier {
         product.addSupplier(this);
     }
 
+    public Set<Product> getProducts() {
+        return products;
+    }
 }

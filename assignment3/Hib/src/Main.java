@@ -9,8 +9,8 @@ public class Main {
         Product product1 = new Product("Prod1", 10);
         Product product2 = new Product("Prod2", 0);
         Product product3 = new Product("Prod3", 5);
-        Supplier supplier = new Supplier("AGH2",
-                new Adress("Czarnowiejska2", "Krakow2 "));
+//        Supplier supplier = new Supplier("AGH2",
+//                "Czarnowiejska2", "Krakow2 ");
         Category category1 = new Category("Cat1");
         Category category2 = new Category("Cat2");
         Invoice invoice1 = new Invoice(1);
@@ -22,14 +22,14 @@ public class Main {
         session.save(product1);
         session.save(product2);
         session.save(product3);
-        session.save(supplier);
+//        session.save(supplier);
         session.save(category1);
         session.save(category2);
         session.save(invoice1);
         session.save(invoice2);
-        supplier.addProduct(product1);
-        supplier.addProduct(product2);
-        supplier.addProduct(product3);
+//        supplier.addProduct(product1);
+//        supplier.addProduct(product2);
+//        supplier.addProduct(product3);
         product1.addCategory(category1);
         product2.addCategory(category2);
         product3.addCategory(category1);
