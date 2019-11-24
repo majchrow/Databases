@@ -4,7 +4,10 @@ import majchrowski.dawid.spring.bean.Product;
 import majchrowski.dawid.spring.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -20,19 +23,7 @@ public class ProductController {
             path = "/products",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public List<Product> getAllPersons(){
+    public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
-
-    @CrossOrigin
-    @RequestMapping(
-            method = RequestMethod.POST,
-            path = "/products",
-            produces = MediaType.APPLICATION_JSON_VALUE,
-            consumes = MediaType.APPLICATION_JSON_VALUE
-    )
-    public Product addPerson(@RequestBody Product product) {
-        return productRepository.save(product);
-    }
-
 }

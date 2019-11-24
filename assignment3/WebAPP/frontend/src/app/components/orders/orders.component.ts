@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {OrderService} from '../../services/order.service';
 import {Order} from '../../classes/order';
 
@@ -8,9 +8,11 @@ import {Order} from '../../classes/order';
   styles: []
 })
 export class OrdersComponent implements OnInit {
-  orders: Order[];
 
-  @Output() orderViewEmitter = new EventEmitter<boolean>();
+  orders: Order[];
+  displayedColumns: string[] = ['invoiceID'];
+  title = 'Your Orders';
+  view = 0;
 
   constructor(private orderService: OrderService) {
   }
@@ -20,10 +22,21 @@ export class OrdersComponent implements OnInit {
   }
 
   private getOrders() {
-    this.orderService.getOrders().subscribe(orders => this.orders = orders);
+    this.orderService.getOrders().subscribe(
+      orders => this.orders = orders
+    );
   }
 
   private onNewOrderClick() {
-    this.orderViewEmitter.emit(true);
+    this.title = 'New Order';
+    this.view = 1;
+  }
+
+  addInvoice(order: Order) {
+    if (order) {
+      this.orders.push(order);
+    }
+    this.title = 'Your Orders';
+    this.view = 0;
   }
 }

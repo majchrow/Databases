@@ -1,8 +1,9 @@
 package majchrowski.dawid.spring.bean;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Product {
@@ -14,9 +15,6 @@ public class Product {
     private Integer unitsOnStock;
     private Double unitPrice;
 
-    @ManyToMany(mappedBy = "products")
-    private List<Invoice> invoices = new ArrayList<>();
-
     public Product(String productName, Integer unitsOnStock, Double unitPrice) {
         this.productName = productName;
         this.unitsOnStock = unitsOnStock;
@@ -24,14 +22,6 @@ public class Product {
     }
 
     public Product() {
-    }
-
-    public List<Invoice> getInvoices() {
-        return invoices;
-    }
-
-    public void addInvoice(Invoice invoice){
-        invoice.addProduct(this);
     }
 
     public void setProductID(int productID) {

@@ -11,9 +11,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule} from '@angular/forms';
 import {OrdersComponent} from './components/orders/orders.component';
-import {JumbotronComponent} from './components/jumbotron/jumbotron.component';
 import {ProductsComponent} from './components/products/products.component';
 import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,6 @@ import {MatButtonModule} from '@angular/material/button';
     HeaderComponent,
     FooterComponent,
     OrdersComponent,
-    JumbotronComponent,
     ProductsComponent
   ],
   imports: [
@@ -32,7 +33,10 @@ import {MatButtonModule} from '@angular/material/button';
     MatIconModule,
     FlexLayoutModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatSelectModule
 
   ],
   providers: [],

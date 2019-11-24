@@ -1,7 +1,0 @@
-<div>
-  <app-header [title]="title"></app-header>
-  <div>
-    <app-orders   *ngIf="view === 0" (orderViewEmitter)="changeView($event)"></app-orders>
-    <app-products *ngIf="view !== 0"></app-products>
-  </div>
-</div>

@@ -18,11 +18,8 @@ export class OrderService {
     return this.http.get<Order[]>(this.rootURL);
   }
 
-  // public postOrders(data: Orders): Observable<Orders> {
-  //     let obj = {
-  //         Name: data.name,
-  //         Description: data.description
-  //     }
-  //     return this.http.post<Orders>(this.rootURL, obj);
-  // }
+  public postInvoice(data): Observable<Order> {
+    console.log(data);
+    return this.http.post<Order>(this.rootURL, data);
+  }
 }
