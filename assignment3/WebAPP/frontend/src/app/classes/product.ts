@@ -1,6 +1,6 @@
 export class Product {
     productID: number;
-    name: string;
-    unitsInStock: number;
-    unitprice: number;
+    productName: string;
+    unitsOnStock: number;
+    unitPrice: number;
 }

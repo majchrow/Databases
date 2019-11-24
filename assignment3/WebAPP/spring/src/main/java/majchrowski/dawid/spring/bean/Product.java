@@ -12,19 +12,16 @@ public class Product {
 
     private String productName;
     private Integer unitsOnStock;
+    private Double unitPrice;
 
-    @ManyToOne
-    @JoinColumn(name = "CategoryFK")
-    private Category category;
-
-    @ManyToMany(mappedBy = "products", cascade = {CascadeType.PERSIST})
+    @ManyToMany(mappedBy = "products")
     private List<Invoice> invoices = new ArrayList<>();
 
-    public Product(String productName, Integer unitsOnStock) {
+    public Product(String productName, Integer unitsOnStock, Double unitPrice) {
         this.productName = productName;
         this.unitsOnStock = unitsOnStock;
+        this.unitPrice = unitPrice;
     }
-
 
     public Product() {
     }
@@ -35,11 +32,6 @@ public class Product {
 
     public void addInvoice(Invoice invoice){
         invoice.addProduct(this);
-    }
-
-    public void addCategory(Category category){
-        category.getProducts().add(this);
-        this.category = category;
     }
 
     public void setProductID(int productID) {
@@ -66,5 +58,11 @@ public class Product {
         return unitsOnStock;
     }
 
+    public Double getUnitPrice() {
+        return unitPrice;
+    }
 
+    public void setUnitPrice(Double unitPrice) {
+        this.unitPrice = unitPrice;
+    }
 }

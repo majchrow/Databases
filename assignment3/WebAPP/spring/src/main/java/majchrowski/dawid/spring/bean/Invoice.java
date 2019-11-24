@@ -12,6 +12,8 @@ public class Invoice {
 
     private int invoiceNumber;
     private int quantity = 0;
+    private double orderPrice = 0;
+
     @ManyToMany(cascade = {CascadeType.PERSIST})
     private List<Product> products= new ArrayList<>();
 
@@ -29,6 +31,15 @@ public class Invoice {
             product.setUnitsOnStock(product.getUnitsOnStock()-1);
             this.quantity++;
         }
+    }
+
+    public void calculatePrice(){
+        this.orderPrice = this.products.stream().map(Product::getUnitPrice).
+                reduce(0., Double::sum);
+    }
+
+    public void calculateQuantity(){
+        this.quantity = this.products.size();
     }
 
     public int getInvoiceNumber() {

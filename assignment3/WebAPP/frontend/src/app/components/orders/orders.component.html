@@ -1,0 +1,13 @@
+<div>
+  <table class="table table-hover" *ngIf="orders">
+    <tr *ngFor="let order of orders">
+      <td>{{order.orderID}}</td>
+      <!--    <td><button (click)="onModify(category.categoryID)" class="btn btn-sm btn-outline-danger">M</button></td>-->
+    </tr>
+  </table>
+  <mat-toolbar-row>
+    <span class="fill-remaining-space"></span>
+    <button mat-raised-button color="primary" (click)="onNewOrderClick()">New Order</button>
+    <span class="fill-remaining-space"></span>
+  </mat-toolbar-row>
+</div>

@@ -1,61 +1,21 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
-import { Product } from '../classes/product';
-import { NgForm } from '@angular/forms';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import {Observable} from 'rxjs';
+import {Product} from '../classes/product';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-    readonly rootURL = `${environment.backendURL}/Products`;
+  readonly rootURL = `${environment.backendURL}/products`;
 
-    formData: Product;
-    productList: Product[];
+  constructor(private http: HttpClient) {
+  }
 
-    constructor(private http: HttpClient) { }
+  public getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.rootURL);
+  }
 
-    resetForm(form?: NgForm) {
-        if (form != null)
-            form.resetForm();
-        this.formData = {
-            productID: null,
-            name: '',
-            unitsInStock: 0,
-            unitprice: 0
-        }
-    }
-
-    refreshList(categoryID: number) {
-        this.http.get<Product[]>(`${this.rootURL}/byCategory${categoryID}`)
-            .toPromise().then(res => {this.productList = res});
-        this.resetForm();
-    }
-
-    public postProduct(data: Product, categoryID: number): Observable<Product> {
-        let obj = {
-            Name: data.name,
-            UnitsInStock: parseInt(data.unitsInStock.toString()), // Somehow it was converted to String ...
-            Unitprice: parseInt(data.unitprice.toString()),
-            CategoryID: categoryID
-        }
-        return this.http.post<Product>(this.rootURL, obj);
-    }
-
-    public putProduct(data: Product, categoryID: number): Observable<any> {
-        let obj = {
-            ProductID: data.productID,
-            Name: data.name,
-            UnitsInStock: parseInt(data.unitsInStock.toString()),
-            Unitprice: parseInt(data.unitprice.toString()),
-            CategoryID: categoryID
-        }
-        return this.http.put<any>(`${this.rootURL}/${data.productID}`, obj);
-    }
-
-    public deleteProduct(id: number): Observable<Product> {
-        return this.http.delete<Product>(`${this.rootURL}/${id}`);
-    }
 }
