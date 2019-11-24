@@ -3,5 +3,5 @@ export class Product {
     productName: string;
     unitsOnStock: number;
     unitPrice: number;
-  selectedUnit?: number;
+    selectedUnit?: number;
 }

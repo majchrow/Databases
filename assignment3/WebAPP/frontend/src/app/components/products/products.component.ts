@@ -47,7 +47,6 @@ export class ProductsComponent implements OnInit {
       });
     });
     this.orderService.postInvoice(preparedProducts).subscribe(result => {
-      console.log(result);
       this.invoiceEmitter.emit(result);
     }, error => {
       alert('Failed to place order');

@@ -23,5 +23,4 @@ public class Invoice {
         return invoiceID;
     }
 
-
 }
