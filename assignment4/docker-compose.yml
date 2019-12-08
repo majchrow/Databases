@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - './mydata:/mydata'
+    ports:
+      - '27017-27019:27017-27019'
